@@ -13,7 +13,7 @@ class ListController extends Controller
 
     public function getIndex()
     {
-
+        return view('lists.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class ListController extends Controller
     public function getCreate()
     {
         //
-        return view('list.create');
+        return view('lists.create');
     }
 
     /**
@@ -33,18 +33,23 @@ class ListController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function postCreate(Request $request)
-    {
-        $this->validate($request,[
+    public function postCreate(Request $request) {
+
+        $this->validate($request, [
         'description'       => 'required',
         'subject'           => 'required',
-        'totalPoint'        => 'required|between:-1000,1000',
-        'entry'             => 'required',
-        'date'              => 'required|date',
-        'title'             => 'required',
-        'story'             => 'required',
-        'points'        => 'required|between:-100,100',
+        'totalPoint'        => 'required|integer',
         ]);
+
+        $description = $request->input('description');
+        $subject = $request->input('subject');
+        $totalPoint = $request->input('totalPoint');
+        $entry = $request->input('entry');
+        $date = $request->input('date');
+        $title = $request->input('title');
+        $story = $request->input('story');
+        $points = $request->input('points');
+
 
         // database mass assignment
         // $title_data = $request->only('subject','description','totalPoint');
@@ -53,11 +58,12 @@ class ListController extends Controller
         // $$entry = new \App\Entry($body_data);
         // $list->save();
         // entry->save();
-        //
+        dump($entry, $date, $title,$story, $points);
+        // dump($body_data);
         // \Session::flash('message','Your list was added');
 
-        return redirect('/lists');
-
+        // return redirect('/lists');
+        // return 'Process adding new list'.$subject;
     }
 
     /**
@@ -66,7 +72,7 @@ class ListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function getShow($id) {
+    public function getShow() {
         return view('lists.show');
     }
 

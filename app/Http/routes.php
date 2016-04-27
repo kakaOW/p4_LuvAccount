@@ -21,15 +21,15 @@ Route::get('/show-login-status', function() {
 #List specific routes
 
 //Home
-Route::get('/list', 'RandomUserController@getIndex');
+Route::get('/lists', 'ListController@getIndex');
 
 //Create
-Route::get('/list/create', 'LoremIpsumController@getCreate');
-Route::post('/list/create', 'LoremIpsumController@postCreate');
+Route::get('/lists/create', 'ListController@getCreate');
+Route::post('/lists/create', 'ListController@postCreate');
 
 //Edit
-Route::get('/list/edit/{id?}', 'RandomUserController@getEdit');
-Route::post('/list/edit', 'RandomUserController@postEdit');
+Route::get('/lists/edit/{id?}', 'ListController@getEdit');
+Route::post('/lists/edit', 'ListController@postEdit');
 
 //Show
-Route::get('/list/{id?}', 'RandomUserController@getShow');
+Route::get('/show', 'ListController@getShow');
