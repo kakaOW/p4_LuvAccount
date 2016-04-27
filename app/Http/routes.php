@@ -25,11 +25,11 @@ Route::get('/list', 'RandomUserController@getIndex');
 
 //Create
 Route::get('/list/create', 'LoremIpsumController@getCreate');
-Route::post('/list/ceate', 'LoremIpsumController@postCreate');
+Route::post('/list/create', 'LoremIpsumController@postCreate');
 
 //Edit
-Route::get('/list/{id?}', 'RandomUserController@getEdit');
-Route::post('/list/{id?}', 'RandomUserController@postEdit');
+Route::get('/list/edit/{id?}', 'RandomUserController@getEdit');
+Route::post('/list/edit', 'RandomUserController@postEdit');
 
 //Show
 Route::get('/list/{id?}', 'RandomUserController@getShow');
