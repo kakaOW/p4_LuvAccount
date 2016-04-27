@@ -10,8 +10,12 @@
                     <label>Subject</label>
                 </div>
                 <div class="small-9 columns">
-                    <input type="text" name="subject" id="subject" placeholder="I will achieve this goal!"/>
-                    <div class='error'>{{ $errors->first('subject') }}</div>
+                    <input type="text" name="subject" id="subject" placeholder="I will achieve this goal!" />
+                    @if($errors->get('subject'))
+                    <div class="alert callout">
+                        {{ $errors->first('subject') }}
+                    </div>
+                    @endif
                 </div>
 
             </div>
@@ -22,7 +26,11 @@
                 </div>
                 <div class="small-9 columns">
                     <textarea name="description" id="description" placeholder="Travel to Orlando as a reward"></textarea>
-                    <div class='error'>{{ $errors->first('description') }}</div>
+                    @if($errors->get('description'))
+                    <div class="alert callout">
+                        {{ $errors->first('description') }}
+                    </div>
+                    @endif
                 </div>
             </div>
 
@@ -30,9 +38,13 @@
                 <div class="small-3 columns">
                     <label>Total Point to achieve</label>
                 </div>
-                <div class="small-3 columns">
+                <div class="small-9 medium-3 columns">
                     <input type="number" name="totalPoint" id="totalPoint" placeholder="100">
-                    <div class='error'>{{ $errors->first('totalPoint') }}</div>
+                    @if($errors->get('totalPoint'))
+                    <div class="alert callout">
+                        {{ $errors->first('totalPoint') }}
+                    </div>
+                    @endif
                 </div>
             </div>
 
@@ -55,11 +67,11 @@
                     </div>
                     <div class="small-5 large-3 columns">
                         <label>Date</label>
-                        <input type="date" name="date[]" id="date[0]" placeholder="" required/>
+                        <input type="date" name="date[]" id="date[0]" placeholder="" />
                     </div>
                     <div class="small-5 large-2 columns">
                         <label>Title</label>
-                        <input type="text" name="title[]" id="title[0]" placeholder="Title" required />
+                        <input type="text" name="title[]" id="title[0]" placeholder="Title"  />
                     </div>
                     <div class="small-9 large-4 columns">
                         <label>Story</label>
@@ -99,8 +111,8 @@
                 $('#items').val(currentItem, currentId);
                 var strToAdd = '<div class="row"><div class="small-2 large-1 columns"><input type="number" name="entry[]" id="entry[' + currentItem + ']" value= "'+ currentId +'" /></label></div><div class="small-5 large-3 columns"><input type="date" name="date[]" id="date[' +
                     currentItem +
-                    ']" placeholder="" /></div><div class="small-5 large-2 columns"><input type="text" name="title[]" id="title[' + currentItem +
-                    ']" placeholder="Title" /></div><div class="small-9 large-4 columns"><textarea name="story[]" id="story[' + currentItem +
+                    ']" placeholder=""  /></div><div class="small-5 large-2 columns"><input type="text" name="title[]" id="title[' + currentItem +
+                    ']" placeholder="Title"  /></div><div class="small-9 large-4 columns"><textarea name="story[]" id="story[' + currentItem +
                     ']" placeholder="Story" row="1"></textarea></div><div class="small-3 large-2 columns"><input type="number" name="points[]" id="points[' + currentItem + ']" value="0" /></div></div>';
                 $('#body_data').append(strToAdd);
 
