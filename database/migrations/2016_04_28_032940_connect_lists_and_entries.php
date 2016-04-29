@@ -12,7 +12,6 @@ class ConnectListsAndEntries extends Migration
      */
     public function up()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Schema::table('entries', function (Blueprint $table) {
 
             # Add a new INT field called `author_id` that has to be unsigned (i.e. positive)
@@ -22,7 +21,6 @@ class ConnectListsAndEntries extends Migration
             $table->foreign('list_id')->references('id')->on('lists');
 
         });
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
     }
 
