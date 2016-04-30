@@ -20,7 +20,6 @@ class CreateEntriesTable extends Migration
         # This generates two columns: `created_at` and `updated_at` to
         # keep track of changes to a row
         $table->timestamps();
-
         # The rest of the fields...
         $table->integer('entry');
         $table->date('date');

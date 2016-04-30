@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use DB;
+
 class ListController extends Controller
 {
 
@@ -13,7 +15,9 @@ class ListController extends Controller
 
     public function getIndex()
     {
-        return view('lists.index');
+        $lists = \App\Lists::orderBy('id','asc')->get();
+
+        return view('lists.index')->with('lists', $lists);
     }
 
     /**
@@ -41,60 +45,91 @@ class ListController extends Controller
         'totalPoint'        => 'required|integer',
         ]);
 
-        $description = $request->input('description');
-        $subject = $request->input('subject');
-        $totalPoint = $request->input('totalPoint');
+        // $description = $request->input('description');
+        // $subject = $request->input('subject');
+        // $totalPoint = $request->input('totalPoint');
+        $list = new \App\Lists();
+        $list->subject = $request->subject;
+        $list->description = $request->description;
+        $list->totalPoint = $request->totalPoint;
+
+        // database mass assignment
+        // $title_data = $request->only('subject','description','totalPoint');
+        //
+        // $list = new \App\Lists($title_data);
+
+        $list->save();
+
+
+        // \Session::flash('message','Your list was added');
+
+        return redirect('/lists');
+    }
+
+
+    public function getShow($id = null) {
+
+        $list = \App\Lists::find($id);
+        $entries = \App\Entry::where('list_id',$id)->orderBy('entry', 'desc')->get();
+
+        dump($entries, $list);
+        return view('lists.show', [
+            'lists' => $list,
+            'entries' => $entries
+        ]);
+    }
+
+
+    public function getEdit($id = null)  {
+
+        $list = \App\Lists::findorFail($id);
+
+        $entries = \App\Entry::where('list_id',$id)->orderBy('entry', 'asc')->get();
+
+
+        return view('lists.edit')->with ([
+            'lists' => $list,
+            'entries' => $entries
+        ]);
+
+    }
+
+    public function postEdit(Request $request) {
+
+
+        $list = \App\Lists::findorfail($request->id);
+
+        $list->subject = $request->subject;
+        $list->description = $request->description;
+        $list->totalPoint = $request->totalPoint;
+        dump($list);
+        $list->save();
+
+        #New Entry
         $entry = $request->input('entry');
         $date = $request->input('date');
         $title = $request->input('title');
         $story = $request->input('story');
         $points = $request->input('points');
+        $list_id = \App\Lists::find($request->id);
+        $body_data[] = array(
+            'entry' => $entry,
+            'data' => $date,
+            'title' => $title,
+            'story' => $story,
+            'points' => $points,
+            'list_id' => $list_id
+        );
 
-
-        // database mass assignment
-        // $title_data = $request->only('subject','description','totalPoint');
-        // $body_data = $request->only('entry','data','title','story','points');
-        // $list = new \App\List($title_data);
-        // $$entry = new \App\Entry($body_data);
-        // $list->save();
-        // entry->save();
-        dump($entry, $date, $title,$story, $points);
-        // dump($body_data);
-        // \Session::flash('message','Your list was added');
-
+        dump($body_data);
+        // $entry->save();
+        #end of new entry
+        return "processed";
         // return redirect('/lists');
-        // return 'Process adding new list'.$subject;
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function getShow() {
-        return view('lists.show');
     }
 
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //

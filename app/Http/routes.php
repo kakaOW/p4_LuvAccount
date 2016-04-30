@@ -23,16 +23,16 @@ Route::get('/show-login-status', function() {
 //Home
 Route::get('/lists', 'ListController@getIndex');
 
-//Create
+//Create list
 Route::get('/lists/create', 'ListController@getCreate');
 Route::post('/lists/create', 'ListController@postCreate');
 
 //Edit
-Route::get('/lists/edit/{id?}', 'ListController@getEdit');
-Route::post('/lists/edit', 'ListController@postEdit');
+Route::get('/edit/{id?}', 'ListController@getEdit');
+Route::post('/edit', 'ListController@postEdit');
 
 //Show
-Route::get('/show', 'ListController@getShow');
+Route::get('/show/{id?}', 'ListController@getShow');
 
 //Debug
 Route::get('/debug', function() {

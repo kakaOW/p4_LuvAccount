@@ -58,65 +58,9 @@
             </div>
 
 
-            <div id="body_data">
-
-                <div class="row">
-                    <div class="small-2 large-1 columns">
-                        <label>Entry</label>
-                        <input type="number" name="entry[]" id="entry[0]" value="1" />
-                    </div>
-                    <div class="small-5 large-3 columns">
-                        <label>Date</label>
-                        <input type="date" name="date[]" id="date[0]" placeholder="" />
-                    </div>
-                    <div class="small-5 large-2 columns">
-                        <label>Title</label>
-                        <input type="text" name="title[]" id="title[0]" placeholder="Title"  />
-                    </div>
-                    <div class="small-9 large-4 columns">
-                        <label>Story</label>
-                        <textarea name="story[]" id="story[0]" placeholder="Story" row="1"></textarea>
-                    </div>
-                    <div class="small-3 large-2 columns">
-                        <label>Points</label>
-                        <input type="number" name="points[]" id="points[0]" value="0" />
-                    </div>
-                </div>
-
-            </div>
-
         </form>
 
     </div>
-    <div class="row small-12 medium-9 align-center">
-        <div class="row">
-            <div class="small-12 columns">
-                <button class="button small" id="addnew" name="addnew" value="Add new item">Add new entry</button>
-                <input type="hidden" id="items" name="items" value="1" />
-            </div>
-        </div>
-    </div>
+
 </div>
-@stop
-
-@section('body')
-    <script src="/js/vendor/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            var currentItem = 0;
-            var currentId = 1;
-            $('#addnew').click(function() {
-                currentItem++;
-                currentId++;
-                $('#items').val(currentItem, currentId);
-                var strToAdd = '<div class="row"><div class="small-2 large-1 columns"><input type="number" name="entry[]" id="entry[' + currentItem + ']" value= "'+ currentId +'" /></label></div><div class="small-5 large-3 columns"><input type="date" name="date[]" id="date[' +
-                    currentItem +
-                    ']" placeholder=""  /></div><div class="small-5 large-2 columns"><input type="text" name="title[]" id="title[' + currentItem +
-                    ']" placeholder="Title"  /></div><div class="small-9 large-4 columns"><textarea name="story[]" id="story[' + currentItem +
-                    ']" placeholder="Story" row="1"></textarea></div><div class="small-3 large-2 columns"><input type="number" name="points[]" id="points[' + currentItem + ']" value="0" /></div></div>';
-                $('#body_data').append(strToAdd);
-
-            });
-        });
-    </script>
 @stop
