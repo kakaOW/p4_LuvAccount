@@ -29,7 +29,7 @@ Route::post('/lists/create', 'ListController@postCreate');
 
 //Edit
 Route::get('/edit/{id?}', 'ListController@getEdit');
-Route::post('/edit', 'ListController@postEdit');
+Route::post('/edit/{id?}', 'ListController@postEdit');
 
 //Show
 Route::get('/show/{id?}', 'ListController@getShow');

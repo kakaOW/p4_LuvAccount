@@ -2,8 +2,9 @@
 
 @section('content')
 
-<div class="row small-12 medium-9 align-center">
-        <form method="POST" action="/edit/">
+<div class="row align-center">
+    <div class="small-12 medium-10">
+        <form method="POST" action="/edit/{{ $lists->id }}">
             {{ csrf_field() }}
             <div class="row">
                 <div class="small-3 columns">
@@ -86,15 +87,15 @@
                     @endforeach
                 @endif
             </div>
-
         </form>
 
-    </div>
-    <div class="row small-12 medium-9 align-center">
-        <div class="row">
-            <div class="small-12 columns">
-                <button class="button small" id="addnew" name="addnew" value="Add new item">Add new entry</button>
-                <input type="hidden" id="items" name="items" value="1" />
+        </div>
+        <div class="row small-12 medium-9 align-center">
+            <div class="row">
+                <div class="small-12 columns">
+                    <button class="button small" id="addnew" name="addnew" value="Add new item">Add new entry</button>
+                    <input type="hidden" id="items" name="items" value="1" />
+                </div>
             </div>
         </div>
     </div>

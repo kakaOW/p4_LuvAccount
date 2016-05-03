@@ -2,7 +2,8 @@
 
 @section('content')
 
-<div class="row small-12 medium-9 align-center">
+<div class="row align-center">
+    <div class="small-12 medium-9">
         <form method="POST" action="/lists/create">
             {{ csrf_field() }}
             <div class="row">
@@ -56,11 +57,7 @@
                     </div>
                 </div>
             </div>
-
-
         </form>
-
     </div>
-
 </div>
 @stop

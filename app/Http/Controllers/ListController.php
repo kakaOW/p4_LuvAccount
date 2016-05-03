@@ -102,27 +102,58 @@ class ListController extends Controller
         $list->subject = $request->subject;
         $list->description = $request->description;
         $list->totalPoint = $request->totalPoint;
-        dump($list);
+        // dump($list);
         $list->save();
 
-        #New Entry
+        $list_id = \App\Lists::where('id','=', $request->id)->pluck('id')->first();
+
+        #Entry
+        $entry_id = \App\Entry::where('list_id','=', $list_id)->pluck('id')->all();
+        $entry_data = \App\Entry::findorfail($entry_id);
         $entry = $request->input('entry');
         $date = $request->input('date');
         $title = $request->input('title');
         $story = $request->input('story');
         $points = $request->input('points');
-        $list_id = \App\Lists::find($request->id);
-        $body_data[] = array(
-            'entry' => $entry,
-            'data' => $date,
-            'title' => $title,
-            'story' => $story,
-            'points' => $points,
-            'list_id' => $list_id
-        );
+        $list_id = \App\Lists::where('id','=', $request->id)->pluck('id')->first();
 
-        dump($body_data);
-        // $entry->save();
+        if(isset($entry)) {
+            $numEntries = count($entry);
+        } else {
+            $numEntries = 0;
+        }
+        for($i=0; $i < $numEntries; $i++) {
+            $body_id[$i] = $list_id;
+        }
+
+        for($i=0; $i < $numEntries; $i++) {
+            $temp = [];
+            $temp['id'] = $entry_id[$i];
+            $temp['entry'] = $entry[$i];
+            $temp['date'] = $date[$i];
+            $temp['title'] = $title[$i];
+            $temp['story'] = $story[$i];
+            $temp['points'] = $points[$i];
+            $temp['list_id'] = $body_id[$i];
+            $test[$i] = $temp;
+            // $test3[$i] = $temp2;
+            // $test2 = \App\Entry::where('id','=',$test3[$i])->get();
+            // $test4[$i] = $test2->updateOrCreate($test);
+        }
+
+        // $body_data[] = array(
+        //     'id' => $entry_id,
+        //     'entry' => $entry,
+        //     'date' => $date,
+        //     'title' => $title,
+        //     'story' => $story,
+        //     'points' => $points,
+        //     'list_id' => $body_id
+        // );
+
+
+        dump($test);
+
         #end of new entry
         return "processed";
         // return redirect('/lists');
