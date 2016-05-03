@@ -15,7 +15,7 @@ class ListController extends Controller
 
     public function getIndex()
     {
-        $lists = \App\Lists::orderBy('id','asc')->get();
+        $lists = \App\Lists::orderBy('updated_at','desc')->get();
 
         return view('lists.index')->with('lists', $lists);
     }
@@ -57,7 +57,7 @@ class ListController extends Controller
         // $title_data = $request->only('subject','description','totalPoint');
         //
         // $list = new \App\Lists($title_data);
-
+        \Session::flash('message','Your list was created');
         $list->save();
 
 
@@ -70,9 +70,9 @@ class ListController extends Controller
     public function getShow($id = null) {
 
         $list = \App\Lists::find($id);
-        $entries = \App\Entry::where('list_id',$id)->orderBy('entry', 'desc')->get();
+        $entries = \App\Entry::where('list_id',$id)->orderBy('entry', 'asc')->get();
 
-        dump($entries, $list);
+        // dump($entries, $list);
         return view('lists.show', [
             'lists' => $list,
             'entries' => $entries
@@ -85,7 +85,6 @@ class ListController extends Controller
         $list = \App\Lists::findorFail($id);
 
         $entries = \App\Entry::where('list_id',$id)->orderBy('entry', 'asc')->get();
-        dump ($entries);
 
         return view('lists.edit')->with ([
             'lists' => $list,
@@ -123,60 +122,10 @@ class ListController extends Controller
         $thisEntry->save();
         }
 
-        dump($thisEntry);
+        // dump($thisEntry);
 
-
-
-        #Entry
-        // $entry_id = \App\Entry::where('list_id','=', $list_id)->pluck('id')->all();
-        // $entry_data = \App\Entry::findorfail($entry_id);
-        // $entry = $request->input('entry');
-        // $date = $request->input('date');
-        // $title = $request->input('title');
-        // $story = $request->input('story');
-        // $points = $request->input('points');
-        // $list_id = \App\Lists::where('id','=', $request->id)->pluck('id')->first();
-        //
-        // if(isset($entry)) {
-        //     $numEntries = count($entry);
-        // } else {
-        //     $numEntries = 0;
-        // }
-        // for($i=0; $i < $numEntries; $i++) {
-        //     $body_id[$i] = $list_id;
-        // }
-        //
-        // for($i=0; $i < $numEntries; $i++) {
-        //     $temp = [];
-        //     $temp['id'] = $entry_id[$i];
-        //     $temp['entry'] = $entry[$i];
-        //     $temp['date'] = $date[$i];
-        //     $temp['title'] = $title[$i];
-        //     $temp['story'] = $story[$i];
-        //     $temp['points'] = $points[$i];
-        //     $temp['list_id'] = $body_id[$i];
-        //     $test[$i] = $temp;
-            // $test3[$i] = $temp2;
-            // $test2 = \App\Entry::where('id','=',$test3[$i])->get();
-            // $test4[$i] = $test2->updateOrCreate($test);
-        // }
-
-        // $body_data[] = array(
-        //     'id' => $entry_id,
-        //     'entry' => $entry,
-        //     'date' => $date,
-        //     'title' => $title,
-        //     'story' => $story,
-        //     'points' => $points,
-        //     'list_id' => $body_id
-        // );
-
-
-        // dump($test);
-
-        #end of new entry
-        return "processed";
-        // return redirect('/lists');
+        \Session::flash('message','Your list was updated');
+        return redirect('/edit/'.$request->id);
 
     }
 

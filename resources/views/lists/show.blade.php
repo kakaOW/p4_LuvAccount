@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="row align-center">
-    <div class="small-12 medium-10">
+    <div class="small-12 medium-11">
         <div class="row">
             <div class="small-3 columns">
                 <label>Subject</label>
@@ -32,7 +32,8 @@
         </div>
         <div class="row">
             <div class="small-12 columns">
-                <a class="button" href="/edit/{{ $lists->id }}"><button type="submit" value="Edit">Edit</button></a>
+                <a href="/lists"><button class="button secondary" type="button" value="Return">Return</button></a>
+                <a class="button" href="/edit/{{ $lists->id }}"><button type="button" value="Edit">Edit</button></a>
             </div>
         </div>
 
@@ -42,8 +43,8 @@
                 <tr>
                   <th width="30">Entry</th>
                   <th width="100">Date</th>
-                  <th width="150">Title</th>
-                  <th>Story</th>
+                  <th witdh="150">Title</th>
+                  <th >Story</th>
                   <th width="30">Points</th>
                 </tr>
               </thead>

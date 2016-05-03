@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="row align-center">
-    <div class="small-12 medium-10">
+    <div class="small-12 medium-11">
         <form method="POST" action="/edit/{{ $lists->id }}">
             {{ csrf_field() }}
             <div class="row">
@@ -51,16 +51,14 @@
 
             <div class="row">
                 <div class="small-12 columns">
-                    <div class="button-group">
-                        <button class="button" type="submit" value="Submit">Update</button>
-
-                    </div>
+                    <a href="/show/{{$lists->id}}"><button class="button secondary" type="button" value="Return">Return</button></a>
+                    <button class="button" type="submit" value="Submit">Update</button>
                 </div>
             </div>
 
 
             <div id="body_data">
-                @if(isset($entries))
+                @if(strval($entries) != "[]")
                     @foreach ($entries as $entry)
                         <div class="row">
                             <input type="hidden" name="listEntry[{{$entry->entry}}][id]" value="{{$entry->id}}">
@@ -87,6 +85,30 @@
                             <input type="hidden" name="listEntry[{{$entry->entry}}][list_id]" value="{{$lists->id}}">
                         </div>
                     @endforeach
+                @else
+                    <div class="row">
+                        <div class="small-2 large-1 columns">
+                            <label>Entry</label>
+                            <input type="number" name="listEntry[1][entry]"  value="1" />
+                        </div>
+                        <div class="small-5 large-3 columns">
+                            <label>Date</label>
+                            <input type="date" name="listEntry[1][date]" value="" />
+                        </div>
+                        <div class="small-5 large-2 columns">
+                            <label>Title</label>
+                            <input type="text" name="listEntry[1][title]"  value="" placeholder="Title" />
+                        </div>
+                        <div class="small-9 large-4 columns">
+                            <label>Story</label>
+                            <textarea name="listEntry[1][story]" placeholder="Story"></textarea>
+                        </div>
+                        <div class="small-3 large-2 columns">
+                            <label>Points</label>
+                            <input type="number" name="listEntry[1][points]"  value="0" />
+                        </div>
+                        <input type="hidden" name="listEntry[1][list_id]" value="{{$lists->id}}">
+                        </div>
                 @endif
             </div>
         </form>
@@ -108,7 +130,7 @@
     <script src="/js/vendor/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            var currentItem = <?php if(isset($entries)) {echo $entries->max('entry');} else { echo 0;} ?>;
+            var currentItem = <?php $i =1; echo strval($entries) == "[]" ? $i :  $entries->max('entry'); ?>;
             $('#addnew').click(function() {
                 currentItem++;
                 $('#items');
