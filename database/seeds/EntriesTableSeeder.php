@@ -14,8 +14,8 @@ class EntriesTableSeeder extends Seeder
 
         $list_id = \App\Lists::where('id','=','1')->pluck('id')->first();
         DB::table('entries')->insert([
-            'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-            'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+            // 'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+            // 'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
             'entry' => 1,
             'date' => '2014-02-28',
             'title' => 'First day',
@@ -25,8 +25,8 @@ class EntriesTableSeeder extends Seeder
         ]);
         $list_id = \App\Lists::where('id','=','1')->pluck('id')->first();
         DB::table('entries')->insert([
-            'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-            'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+            // 'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+            // 'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
             'entry' => 2,
             'date' => '2014-06-04',
             'title' => 'Birthday',
@@ -36,8 +36,8 @@ class EntriesTableSeeder extends Seeder
         ]);
         $list_id = \App\Lists::where('id','=','2')->pluck('id')->first();
         DB::table('entries')->insert([
-            'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-            'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+            // 'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+            // 'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
             'entry' => 1,
             'date' => '2014-03-01',
             'title' => 'To Disney World!',
@@ -47,8 +47,8 @@ class EntriesTableSeeder extends Seeder
         ]);
         $list_id = \App\Lists::where('id','=','2')->pluck('id')->first();
         DB::table('entries')->insert([
-            'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-            'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+            // 'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+            // 'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
             'entry' => 2,
             'date' => '2014-03-02',
             'title' => 'Epcot',
@@ -58,8 +58,8 @@ class EntriesTableSeeder extends Seeder
         ]);
         $list_id = \App\Lists::where('id','=','2')->pluck('id')->first();
         DB::table('entries')->insert([
-            'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-            'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+            // 'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+            // 'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
             'entry' => 3,
             'date' => '2014-03-03',
             'title' => 'Corn Dogs',
