@@ -23,7 +23,7 @@
     @endif
 
     <div class="title-bar title">
-        <a href="main.html"><div class="title-bar-title">LuvAccount</div></a>
+        <a href="/"><div class="title-bar-title">LuvAccount</div></a>
         <ul class="menu align-right">
             <!-- <li>
                     <input type="search" placeholder="Search">
@@ -31,7 +31,13 @@
                 <li>
                     <button type="button" class="button small">Search</button>
                 </li> -->
-            <li><a href="#">Login</a></li>
+            @if(Auth::check())
+            <li><a href="/">Profile</a></li>
+            <li><a href='/logout'>Log out</a></li>
+            @else
+            <li><a href='/login'>Log in</a></li>
+            <li><a href='/register'>Register</a></li>
+            @endif
         </ul>
     </div>
 
@@ -53,7 +59,7 @@
     <script src="/js/vendor/what-input.min.js"></script>
     <script src="/js/vendor/foundation.min.js"></script>
     <script src="/js/app.js"></script>
-    
+
     {{-- Yield any page specific JS files or anything else you might want at the end of the body --}}
     @yield('body')
 

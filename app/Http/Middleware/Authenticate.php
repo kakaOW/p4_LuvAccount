@@ -21,6 +21,7 @@ class Authenticate
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
             } else {
+                \Session::flash('message','Please login to use the features.');
                 return redirect()->guest('login');
             }
         }

@@ -21,6 +21,8 @@ Route::get('/show-login-status', function() {
 #List specific routes
 
 //Home
+Route::get('/', 'ListController@getIndex');
+
 Route::get('/lists', 'ListController@getIndex');
 
 //Create list

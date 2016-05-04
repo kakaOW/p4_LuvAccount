@@ -22,7 +22,11 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    # Where should the user be redirected to if their login fails?
+    protected $loginPath = '/login';
 
+    # Where should the user be redirected to after logging out?
+    protected $redirectAfterLogout = '/';
     /**
      * Where to redirect users after login / registration.
      *
@@ -68,5 +72,12 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function logout()
+    {
+        \Auth::guard($this->getGuard())->logout();
+        \Session::flash('message','You have been logged out.');
+        return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
     }
 }
