@@ -21,20 +21,23 @@ Route::get('/show-login-status', function() {
 #List specific routes
 
 //Home
-Route::get('/', 'ListController@getIndex');
-
-Route::get('/lists', 'ListController@getIndex');
-
-//Create list
-Route::get('/lists/create', 'ListController@getCreate');
-Route::post('/lists/create', 'ListController@postCreate');
-
-//Edit
-Route::get('/edit/{id?}', 'ListController@getEdit');
-Route::post('/edit/{id?}', 'ListController@postEdit');
-
+Route::get('/', 'WelcomeController@getIndex');
 //Show
 Route::get('/show/{id?}', 'ListController@getShow');
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/profile', 'ListController@getIndex');
+
+    //Edit Profile
+    Route::get('/profile/edit', 'ProfileController@getProfile');
+    Route::post('/profile/edit', 'ProfileController@postProfile');
+    //Create list
+    Route::get('/lists/create', 'ListController@getCreate');
+    Route::post('/lists/create', 'ListController@postCreate');
+    //Edit
+    Route::get('/edit/{id?}', 'ListController@getEdit');
+    Route::post('/edit/{id?}', 'ListController@postEdit');
+    });
 
 //Debug
 Route::get('/debug', function() {

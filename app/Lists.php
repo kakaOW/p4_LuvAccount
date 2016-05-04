@@ -10,4 +10,8 @@ class Lists extends Model
     public function entry() {
       return $this->hasMany('\App\Entry');
     }
+
+    public function user() {
+    return $this->belongsTo('\App\User');
+}
 }

@@ -4524,6 +4524,10 @@ body {
 footer div p {
   text-align: center; }
 
+  li {
+    list-style: none;
+  }
+
 /*----------------------------------------------------
 Flash message
 -----------------------------------------------------*/
@@ -4531,11 +4535,11 @@ Flash message
     width:100%;
     text-align:center;
     padding:5px;
-    position:fixed;
+    position:relative;
     top:0;
     left:0;
     background-color:yellow;
     font-weight:bold;
-    opacity: 0.50;
+    /*opacity: 0.50;*/
 
 }

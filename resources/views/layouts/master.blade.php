@@ -17,29 +17,21 @@
 
 </head>
 <body>
-
-    @if(Session::get('message') != null)
-        <div class='flash_message'>{{ Session::get('message') }}</div>
-    @endif
-
     <div class="title-bar title">
         <a href="/"><div class="title-bar-title">LuvAccount</div></a>
         <ul class="menu align-right">
-            <!-- <li>
-                    <input type="search" placeholder="Search">
-                </li>
-                <li>
-                    <button type="button" class="button small">Search</button>
-                </li> -->
             @if(Auth::check())
-            <li><a href="/">Profile</a></li>
-            <li><a href='/logout'>Log out</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/logout">Log out</a></li>
             @else
-            <li><a href='/login'>Log in</a></li>
-            <li><a href='/register'>Register</a></li>
+            <li><a href="/login">Log in</a></li>
+            <li><a href="/register">Register</a></li>
             @endif
         </ul>
     </div>
+        @if(Session::get('message') != null)
+            <div class='flash_message'>{{ Session::get('message') }}</div>
+        @endif
 
 
     <section>

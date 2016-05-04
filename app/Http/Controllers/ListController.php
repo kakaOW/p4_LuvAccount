@@ -11,13 +11,17 @@ use DB;
 class ListController extends Controller
 {
 
-    //Responds to requests to GET /list
 
     public function getIndex()
     {
-        $lists = \App\Lists::orderBy('updated_at','desc')->get();
+        $lists = \App\Lists::where('user_id',\Auth::id())->orderBy('updated_at','desc')->get();
+        $entries = \App\Entry::get();
 
-        return view('lists.index')->with('lists', $lists);
+        return view('lists.index', [
+            'lists' => $lists,
+            'entries' => $entries
+
+        ]);
     }
 
     /**
@@ -63,7 +67,7 @@ class ListController extends Controller
 
         // \Session::flash('message','Your list was added');
 
-        return redirect('/lists');
+        return redirect('/profile');
     }
 
 

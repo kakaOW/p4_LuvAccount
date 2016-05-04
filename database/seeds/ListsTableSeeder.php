@@ -16,7 +16,8 @@ class ListsTableSeeder extends Seeder
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
             'subject' => 'Love',
             'description' => 'A log of our ups and downs throughout our relationship',
-            'totalPoint' => '100'
+            'totalPoint' => '100',
+            'user_id' => '1'
         ]);
 
         DB::table('lists')->insert([
@@ -24,7 +25,8 @@ class ListsTableSeeder extends Seeder
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
             'subject' => 'Disney',
             'description' => 'Our ups and downs at Disney 迪士尼',
-            'totalPoint' => '100'
+            'totalPoint' => '100',
+            'user_id' => '1'
         ]);
     }
 }

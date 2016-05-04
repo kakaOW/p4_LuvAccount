@@ -3,23 +3,34 @@
 @section('content')
 
 <div class="row align-center">
-    <div class="small-12 medium-9">
+    <div class="small-12 medium-9 columns">
         <div class="row">
-
-            <div class="columns align-self-middle">
+            <div class="columns small-6 medium-5  align-self-middle">
                 <div class="media-object">
                     <div class="media-object-section">
-                        <img class="img-circle" data-interchange="[http://placehold.it/75x75, small], [http://placehold.it/125x125, medium], [http://placehold.it/225x225.jpg, large]">
+                        <img class="img-circle" data-interchange="[http://placehold.it/125x125, small], [http://placehold.it/125x125, medium], [http://placehold.it/225x225.jpg, large]">
                     </div>
                 </div>
             </div>
-            <div class="columns align-self-middle">
-                <div class="profile-text">
-                    <h3>Oscar</h3>
-                    <p>This is my list.</p>
+            <div class="columns small-6 medium-7 align-self-middle">
+                <div class="row">
+                    <div class="columns small-5 shrink">
+                        <h3>{{ $user->name }}</h3>
+                    </div>
+                    <div class="columns ">
+                        <a href="/profile/edit"><button class="secondary hollow button tiny">Edit Profile</button></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="columns small-5">
+                        <p><strong>{{ $lists->count() }}</strong> Lists</p>
+                    </div>
+                    <div class="columns">
+                        <p><strong>{{ $entries->count() }}</strong> Entries</p>
+                    </div>
                 </div>
             </div>
-            <div class="columns"></div>
+
         </div>
     </div>
 </div>
@@ -27,7 +38,7 @@
 <hr />
 
 <div class="row align-center">
-    <div class="small-12 medium-9">
+    <div class="small-12 medium-9 columns">
 
     <!-- List in gallery view -->
         <div class="row">

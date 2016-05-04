@@ -158,6 +158,7 @@ return [
 
         Barryvdh\Debugbar\ServiceProvider::class,
 
+        'App\Providers\ComposerServiceProvider'
 
     ],
 

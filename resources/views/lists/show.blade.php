@@ -32,7 +32,7 @@
         </div>
         <div class="row">
             <div class="small-12 columns">
-                <a href="/lists"><button class="button secondary" type="button" value="Return">Return</button></a>
+                <a href="/"><button class="button secondary" type="button" value="Return">Return</button></a>
                 <a class="button" href="/edit/{{ $lists->id }}"><button type="button" value="Edit">Edit</button></a>
             </div>
         </div>
