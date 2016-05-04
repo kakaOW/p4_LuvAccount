@@ -21,7 +21,8 @@ class EntriesTableSeeder extends Seeder
             'title' => 'First day',
             'story' => 'She said yes! I planned our first trip the next day to Disney!',
             'points' => 1,
-            'list_id' => $list_id
+            'list_id' => $list_id,
+            'user_id' => '1'
         ]);
         $list_id = \App\Lists::where('id','=','1')->pluck('id')->first();
         DB::table('entries')->insert([
@@ -32,7 +33,8 @@ class EntriesTableSeeder extends Seeder
             'title' => 'Birthday',
             'story' => 'I bought an electronic piano as a gift for her birthday',
             'points' => 1,
-            'list_id' => $list_id
+            'list_id' => $list_id,
+            'user_id' => '1'
         ]);
         $list_id = \App\Lists::where('id','=','2')->pluck('id')->first();
         DB::table('entries')->insert([
@@ -43,7 +45,8 @@ class EntriesTableSeeder extends Seeder
             'title' => 'To Disney World!',
             'story' => 'I asked Jing to be my girlfriend and she said yes, so we went on to our first trip - Disney World',
             'points' => 1,
-            'list_id' => $list_id
+            'list_id' => $list_id,
+            'user_id' => '1'
         ]);
         $list_id = \App\Lists::where('id','=','2')->pluck('id')->first();
         DB::table('entries')->insert([
@@ -54,7 +57,8 @@ class EntriesTableSeeder extends Seeder
             'title' => 'Epcot',
             'story' => 'We went to Epcot and enjoyed the food around the world, a truly magical experience!',
             'points' => 1,
-            'list_id' => $list_id
+            'list_id' => $list_id,
+            'user_id' => '1'
         ]);
         $list_id = \App\Lists::where('id','=','2')->pluck('id')->first();
         DB::table('entries')->insert([
@@ -65,7 +69,8 @@ class EntriesTableSeeder extends Seeder
             'title' => 'Corn Dogs',
             'story' => 'I made all the plans to make Jing happy but corn dogs, coming out of nowhere, excited her the most...',
             'points' => 0,
-            'list_id' => $list_id
+            'list_id' => $list_id,
+            'user_id' => '1'
         ]);
     }
 }

@@ -38,6 +38,17 @@
         </div>
 
         <div class="row">
+            <div class="small-12 columns">
+                <div class="progress success" role="progressbar" tabindex="0" aria-valuenow="{{$entries->sum('points')}}" aria-valuemin="0" aria-valuetext="{{round($entries->sum('points')/$lists->totalPoint*100)}}%" aria-valuemax="{{ $lists->totalPoint }}">
+                    <span class="progress-meter" style="width: {{round($entries->sum('points')/$lists->totalPoint*100)}}%">
+                        <p class="progress-meter-text">{{round($entries->sum('points')/$lists->totalPoint*100)}}%</p>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
             <table class="hover">
               <thead>
                 <tr>

@@ -8,6 +8,9 @@ class Entry extends Model
 {
     protected $fillable = ['entry', 'date', 'title', 'story', 'points'];
     public function lists() {
-      return $this->belongsTo('\APP\Lists');
+      return $this->belongsTo('\App\Lists');
     }
+    public function user() {
+    return $this->belongsTo('\App\User');
+}   
 }

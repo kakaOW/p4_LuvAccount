@@ -15,7 +15,7 @@ class ListController extends Controller
     public function getIndex()
     {
         $lists = \App\Lists::where('user_id',\Auth::id())->orderBy('updated_at','desc')->get();
-        $entries = \App\Entry::get();
+        $entries = \App\Entry::where('user_id',\Auth::id())->get();
 
         return view('lists.index', [
             'lists' => $lists,
@@ -56,6 +56,7 @@ class ListController extends Controller
         $list->subject = $request->subject;
         $list->description = $request->description;
         $list->totalPoint = $request->totalPoint;
+        $list->user_id = \Auth::id();
 
         // database mass assignment
         // $title_data = $request->only('subject','description','totalPoint');
@@ -123,6 +124,7 @@ class ListController extends Controller
         $thisEntry->story = $listEntry['story'];
         $thisEntry->points = $listEntry['points'];
         $thisEntry->list_id = $list_id;
+        $thisEntry->user_id = \Auth::id();
         $thisEntry->save();
         }
 
