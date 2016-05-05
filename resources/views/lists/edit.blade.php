@@ -52,8 +52,19 @@
             <div class="row">
                 <div class="small-12 columns">
                     <a href="/show/{{$lists->id}}"><button class="button secondary" type="button" value="Return">Return</button></a>
+                    <a data-open="deleteConfirmation"><button class="button secondary" type="button" value="Return">Delete</button></a>
                     <button class="button" type="submit" value="Submit">Update</button>
                 </div>
+            </div>
+
+            <div class="small reveal" id="deleteConfirmation" data-reveal>
+                <h5>Delete {{$lists->subject }}</h5>
+                <p class="lead">This list will be deleted and you won't be able to find it anymore. You can also edit this list, if you just want to change something.</p>
+                <button class="button secondary" data-close aria-label="Close modal" type="button">Cancel</button>
+                <a href="/deelte/{{$lists->id}}"><button class="button" type="button" value="Return">Proceed</button></a>
+                <button class="close-button" data-close aria-label="Close modal" type="button">
+                <span aria-hidden="true">&times;</span>
+                </button>
             </div>
 
 

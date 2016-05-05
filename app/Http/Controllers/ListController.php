@@ -140,19 +140,30 @@ class ListController extends Controller
     }
 
 
-    public function update(Request $request, $id)
-    {
-        //
+    public function getDoDelete($id) {
+
+    # Get the book to be deleted
+    $list = \App\Lists::find($id);
+    $entries = \App\Entry::where('list_id',$id)->get();
+
+    if(is_null($list)) {
+        \Session::flash('message','Not found.');
+        return redirect('/profile');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    # First remove any entries associated with this book
+    if(isset($entries)) {
+        foreach($entries as $entry){
+            $entry->delete();
+        }
     }
+
+    # Then delete the book
+    $list->delete();
+
+    # Done
+    \Session::flash('message',$list->subject.' was deleted.');
+    return redirect('/profile');
+
+}
 }

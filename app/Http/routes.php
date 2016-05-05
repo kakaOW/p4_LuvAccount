@@ -37,6 +37,10 @@ Route::group(['middleware' => 'auth'], function() {
     //Edit
     Route::get('/edit/{id?}', 'ListController@getEdit');
     Route::post('/edit/{id?}', 'ListController@postEdit');
+
+    //Delete list
+    Route::get('/confirm-delete/{id?}', 'ListController@getConfirmDelete');
+    Route::get('/delete/{id?}', 'ListController@getDoDelete');
     });
 
 //Debug
