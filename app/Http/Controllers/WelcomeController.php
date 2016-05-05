@@ -13,7 +13,7 @@ class WelcomeController extends Controller {
             return redirect()->to('/profile');
         }
 
-        return view('welcome.index');
+        return view('welcome.home');
 
     }
 

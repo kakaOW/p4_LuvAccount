@@ -4485,7 +4485,7 @@ body {
   font-size: 0.825em; }
 
 .row {
-  margin: 30px auto; }
+  margin: 2em auto; }
 
 .title {
   text-align: center;
@@ -4500,6 +4500,7 @@ body {
 .img-circle {
   border-radius: 50%; }
 
+/*Profile Page img view*/
 .gallery_view {
   overflow: hidden;
   height: 330px;
@@ -4521,12 +4522,29 @@ body {
       .gallery_view p {
         display: none; } }
 
+
+/*Footer*/
 footer div p {
   text-align: center; }
 
   li {
     list-style: none;
   }
+
+/*Home Page*/
+.hiddenSmall {
+    background-color: #f2f2f2; }
+  .hiddenSmall p {
+    padding-top: 1em;
+  }
+  @media screen and (max-width: 39.9375em) {
+    .hiddenSmall {
+      display:none;
+    }
+  }
+
+
+
 
 /*----------------------------------------------------
 Flash message

@@ -86,15 +86,19 @@ class ListController extends Controller
 
 
     public function getEdit($id = null)  {
-
         $list = \App\Lists::findorFail($id);
 
         $entries = \App\Entry::where('list_id',$id)->orderBy('entry', 'asc')->get();
+        if(\Auth::id() == $list->user_id) {
+            return view('lists.edit')->with ([
+                'lists' => $list,
+                'entries' => $entries
+            ]);
 
-        return view('lists.edit')->with ([
-            'lists' => $list,
-            'entries' => $entries
-        ]);
+        } else{
+            \Session::flash('message','Unauthorize to edit');
+            return redirect('/show/'.$id);
+        }
 
     }
 

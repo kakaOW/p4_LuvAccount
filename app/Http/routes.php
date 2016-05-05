@@ -32,8 +32,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/profile/edit', 'ProfileController@getProfile');
     Route::post('/profile/edit', 'ProfileController@postProfile');
     //Create list
-    Route::get('/lists/create', 'ListController@getCreate');
-    Route::post('/lists/create', 'ListController@postCreate');
+    Route::get('/create', 'ListController@getCreate');
+    Route::post('/create', 'ListController@postCreate');
     //Edit
     Route::get('/edit/{id?}', 'ListController@getEdit');
     Route::post('/edit/{id?}', 'ListController@postEdit');
