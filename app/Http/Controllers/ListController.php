@@ -58,16 +58,9 @@ class ListController extends Controller
         $list->totalPoint = $request->totalPoint;
         $list->user_id = \Auth::id();
 
-        // database mass assignment
-        // $title_data = $request->only('subject','description','totalPoint');
-        //
-        // $list = new \App\Lists($title_data);
-        \Session::flash('message','Your list was created');
         $list->save();
 
-
-        // \Session::flash('message','Your list was added');
-
+        \Session::flash('message','Your list was created');
         return redirect('/profile');
     }
 
@@ -75,6 +68,11 @@ class ListController extends Controller
     public function getShow($id = null) {
 
         $list = \App\Lists::find($id);
+        if(is_null($list)) {
+            \Session::flash('message','List not found');
+            return redirect('/profile');
+        }
+
         $entries = \App\Entry::where('list_id',$id)->orderBy('entry', 'asc')->get();
 
         // dump($entries, $list);
@@ -86,7 +84,11 @@ class ListController extends Controller
 
 
     public function getEdit($id = null)  {
-        $list = \App\Lists::findorFail($id);
+        $list = \App\Lists::find($id);
+        if(is_null($list)) {
+            \Session::flash('message','List not found');
+            return redirect('/profile');
+        }
 
         $entries = \App\Entry::where('list_id',$id)->orderBy('entry', 'asc')->get();
         if(\Auth::id() == $list->user_id) {
@@ -99,6 +101,7 @@ class ListController extends Controller
             \Session::flash('message','Unauthorize to edit');
             return redirect('/show/'.$id);
         }
+
 
     }
 
@@ -119,6 +122,7 @@ class ListController extends Controller
         foreach($listEntries as $listEntry) {
             if(isset($listEntry['id'])) {
                 $thisEntry = \App\Entry::where('id', $listEntry['id'])->first();
+                // $thisEntry = $thisEntry::update()
             } else{
                 $thisEntry = new \App\Entry();
             }
@@ -132,10 +136,15 @@ class ListController extends Controller
         $thisEntry->save();
         }
 
-        // dump($thisEntry);
+        // $deleteEntries = \App\Entry::where('checkbox', 'on')->delete();
+
+
+        dump($thisEntry);
+        // dump($deleteEntries);
 
         \Session::flash('message','Your list was updated');
-        return redirect('/edit/'.$request->id);
+        return "proceed";
+        // return redirect('/edit/'.$request->id);
 
     }
 

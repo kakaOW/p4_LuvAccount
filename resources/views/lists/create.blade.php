@@ -4,7 +4,7 @@
 
 <div class="row align-center">
     <div class="small-12 medium-11">
-        <form method="POST" action="/lists/create">
+        <form method="POST" action="/create">
             {{ csrf_field() }}
             <div class="row">
                 <div class="small-3 columns">
