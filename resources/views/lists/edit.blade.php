@@ -70,27 +70,40 @@
 
             <div id="body_data">
                 @if(strval($entries) != "[]")
+                    <div class="row hiddenSmallData">
+                        <div class="small-2 large-1 columns">
+                            <label for="Entry">Entry</label>
+                        </div>
+                        <div class="small-5 large-3 columns">
+                            <label for="Date">Date</label>
+                        </div>
+                        <div class="small-5 large-2 columns">
+                            <label for="Title">Title</label>
+                        </div>
+                        <div class="small-9 large-4 columns">
+                            <label for="Story">Story</label>
+                        </div>
+                        <div class="small-3 large-2 columns">
+                            <label for="Points">Points</label>
+                        </div>
+
+                    </div>
                     @foreach ($entries as $entry)
                         <div class="row">
                             <input type="hidden" name="listEntry[{{$entry->entry}}][id]" value="{{$entry->id}}">
                             <div class="small-2 large-1 columns">
-                                <label>Entry</label>
                                 <input type="number" name="listEntry[{{$entry->entry}}][entry]"  value="{{$entry->entry}}" />
                             </div>
                             <div class="small-5 large-3 columns">
-                                <label>Date</label>
                                 <input type="date" name="listEntry[{{$entry->entry}}][date]" value="{{$entry->date}}" />
                             </div>
                             <div class="small-5 large-2 columns">
-                                <label>Title</label>
                                 <input type="text" name="listEntry[{{$entry->entry}}][title]"  value="{{$entry->title}}"  />
                             </div>
                             <div class="small-9 large-4 columns">
-                                <label>Story</label>
                                 <textarea name="listEntry[{{$entry->entry}}][story]" >{{$entry->story}}</textarea>
                             </div>
                             <div class="small-3 large-2 columns">
-                                <label>Points</label>
                                 <input type="number" name="listEntry[{{$entry->entry}}][points]"  value="{{$entry->points}}" />
                             </div>
                             <input type="hidden" name="listEntry[{{$entry->entry}}][list_id]" value="{{$lists->id}}">
@@ -141,7 +154,7 @@
     <script src="/js/vendor/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            var currentItem = <?php $i =1; echo strval($entries) == "[]" ? $i :  $entries->max('entry'); ?>;
+            var currentItem = <?php $i =1; echo strval($entries) == "[]" ? $i :  $entries->count('title'); ?>;
             $('#addnew').click(function() {
                 currentItem++;
                 $('#items');
