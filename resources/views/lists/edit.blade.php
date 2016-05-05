@@ -53,7 +53,7 @@
                 <div class="small-12 columns">
                     <a href="/show/{{$lists->id}}"><button class="button secondary" type="button" value="Return">Return</button></a>
                     <a data-open="deleteConfirmation"><button class="button secondary" type="button" value="Return">Delete</button></a>
-                    <button class="button" type="submit" value="Submit">Update</button>
+                    <button class="button" type="submit" value="Submit" id="confirm">Update</button>
                 </div>
             </div>
 
@@ -61,7 +61,7 @@
                 <h5>Delete {{$lists->subject }}</h5>
                 <p class="lead">This list will be deleted and you won't be able to find it anymore. You can also edit this list, if you just want to change something.</p>
                 <button class="button secondary" data-close aria-label="Close modal" type="button">Cancel</button>
-                <a href="/deelte/{{$lists->id}}"><button class="button" type="button" value="Return">Proceed</button></a>
+                <a href="/delete/{{$lists->id}}"><button class="button" type="button" value="Return">Proceed</button></a>
                 <button class="close-button" data-close aria-label="Close modal" type="button">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -69,75 +69,80 @@
 
 
             <div id="body_data">
-                @if(strval($entries) != "[]")
-                    <div class="row hiddenSmallData">
-                        <div class="small-2 large-1 columns">
-                            <label for="Entry">Entry</label>
-                        </div>
-                        <div class="small-5 large-3 columns">
-                            <label for="Date">Date</label>
-                        </div>
-                        <div class="small-5 large-2 columns">
-                            <label for="Title">Title</label>
-                        </div>
-                        <div class="small-9 large-4 columns">
-                            <label for="Story">Story</label>
-                        </div>
-                        <div class="small-3 large-2 columns">
-                            <label for="Points">Points</label>
-                        </div>
-
+                <div class="row hiddenSmallData">
+                    <div class="small-2 medium-1 large-1 columns">
+                        <label for="entry">Entry</label>
                     </div>
-                    <?php $i=1?>
-                    @foreach ($entries as $entry)
-                        <div class="row">
-                            <input type="hidden" name="listEntry[{{$i}}][id]" value="{{$entry->id}}">
-                            <div class="small-2 large-1 columns">
-                                <label>{{$i}}</label>
-                                <input type="hidden" name="listEntry[{{$i}}][entry]"  value="{{$i}}" />
-                            </div>
-                            <div class="small-5 large-3 columns">
-                                <input type="date" name="listEntry[{{$i}}][date]" value="{{$entry->date}}" />
-                            </div>
-                            <div class="small-5 large-2 columns">
-                                <input type="text" name="listEntry[{{$i}}][title]"  value="{{$entry->title}}"  />
-                            </div>
-                            <div class="small-9 large-4 columns">
-                                <textarea name="listEntry[{{$i}}][story]" >{{$entry->story}}</textarea>
-                            </div>
-                            <div class="small-3 large-2 columns">
-                                <input type="number" name="listEntry[{{$i}}][points]"  value="{{$entry->points}}" />
-                            </div>
-                            <input type="hidden" name="listEntry[{{$i}}][list_id]" value="{{$lists->id}}">
-                        </div>
-                        <?php $i++?>
-                    @endforeach
-                @else
+                    <div class="small-10 medium-5 large-2 columns">
+                        <label for="date">Date</label>
+                    </div>
+                    <div class="small-12 medium-6 large-3 columns">
+                        <label for="title">Title</label>
+                    </div>
+                    <div class="small-12 medium-9 large-4 columns">
+                        <label for="story">Story</label>
+                    </div>
+                    <div class="small-6 medium-2 large-1 columns">
+                        <label for="points">Points</label>
+                    </div>
+                    <div class="small-6 medium-1 large-1 columns">
+                        <label for="deleteEntry">Delete</label>
+                    </div>
+                </div>
+                <?php $i=1?>
+            @if(strval($entries) != "[]")
+                @foreach ($entries as $entry)
                     <div class="row">
-                        <div class="small-2 large-1 columns">
-                            <label>Entry</label>
-                            <input type="hidden" name="listEntry[1][entry]"  value="1" />
-                            <label>1</label>
+                        <input type="hidden" name="listEntry[{{$i}}][id]" value="{{$entry->id}}">
+                        <div class="small-2 medium-1 large-1 columns">
+                            <label>{{$i}}</label>
+                            <input type="hidden" name="listEntry[{{$i}}][entry]"  value="{{$i}}" />
                         </div>
-                        <div class="small-5 large-3 columns">
-                            <label>Date</label>
-                            <input type="date" name="listEntry[1][date]" value="" />
+                        <div class="small-10 medium-5 large-2 columns">
+                            <input type="date" name="listEntry[{{$i}}][date]" value="{{$entry->date}}" />
                         </div>
-                        <div class="small-5 large-2 columns">
-                            <label>Title</label>
-                            <input type="text" name="listEntry[1][title]"  value="" placeholder="Title" />
+                        <div class="small-12 medium-6 large-3 columns">
+                            <input type="text" name="listEntry[{{$i}}][title]"  value="{{$entry->title}}"  />
                         </div>
-                        <div class="small-9 large-4 columns">
-                            <label>Story</label>
-                            <textarea name="listEntry[1][story]" placeholder="Story"></textarea>
+                        <div class="small-12 medium-9 large-4 columns">
+                            <textarea name="listEntry[{{$i}}][story]" >{{$entry->story}}</textarea>
                         </div>
-                        <div class="small-3 large-2 columns">
-                            <label>Points</label>
-                            <input type="number" name="listEntry[1][points]"  value="0" />
+                        <div class="small-6 medium-2 large-1 columns">
+                            <input type="number" name="listEntry[{{$i}}][points]"  value="{{$entry->points}}" />
                         </div>
-                        <input type="hidden" name="listEntry[1][list_id]" value="{{$lists->id}}">
+                        <div class="small-6 medium-1 large-1 columns">
+                            <input type="checkbox" name="listEntry[{{$i}}][deleteEntry]"/>
+                            <span class="hiddenData">Delete Entry</span>
                         </div>
-                @endif
+                        <input type="hidden" name="listEntry[{{$i}}][list_id]" value="{{$lists->id}}">
+                    </div>
+                    <?php $i++?>
+                @endforeach
+            @else
+                <div class="row">
+                    <div class="small-2 medium-1 large-1 columns">
+                        <input type="hidden" name="listEntry[1][entry]"  value="1" />
+                        <label>1</label>
+                    </div>
+                    <div class="small-10 medium-5 large-2 columns">
+                        <input type="date" name="listEntry[1][date]" value="" />
+                    </div>
+                    <div class="small-12 medium-6 large-3 columns">
+                        <input type="text" name="listEntry[1][title]"  value="" placeholder="Title" />
+                    </div>
+                    <div class="small-12 medium-9 large-4 columns">
+                        <textarea name="listEntry[1][story]" placeholder="Story"></textarea>
+                    </div>
+                    <div class="small-6 medium-2 large-1 columns">
+                        <input type="number" name="listEntry[1][points]"  value="0" />
+                    </div>
+                    <div class="small-6 medium-1 large-1 columns">
+                        <input type="checkbox" name="listEntry[1][deleteEntry]"/>
+                        <span class="hiddenData">Delete Entry</span>
+                    </div>
+                    <input type="hidden" name="listEntry[1][list_id]" value="{{$lists->id}}">
+                </div>
+            @endif
             </div>
         </form>
 
@@ -154,6 +159,8 @@
 </div>
 @stop
 
+
+
 @section('body')
     <script src="/js/vendor/jquery.min.js"></script>
     <script type="text/javascript">
@@ -162,7 +169,7 @@
             $('#addnew').click(function() {
                 currentItem++;
                 $('#items');
-                var strToAdd = '<div class="row"><div class="small-2 large-1 columns"><input type="hidden" name="listEntry[' + currentItem + '][entry]" value= "' + currentItem + '" /><label>' + currentItem + '</label></div><div class="small-5 large-3 columns"><input type="date" name="listEntry[' + currentItem + '][date]" placeholder=""  /></div><div class="small-5 large-2 columns"><input type="text" name="listEntry[' + currentItem + '][title]" placeholder="Title"  /></div><div class="small-9 large-4 columns"><textarea name="listEntry[' + currentItem + '][story]" placeholder="Story" row="1"></textarea></div><div class="small-3 large-2 columns"><input type="number" name="listEntry[' + currentItem + '][points]" value="0" /></div></div>';
+                var strToAdd = '<div class="row"><div class="small-2 medium-1 large-1 columns"><input type="hidden" name="listEntry[' + currentItem + '][entry]" value= "' + currentItem + '" /><label>' + currentItem + '</label></div><div class="small-10 medium-5 large-2 columns"><input type="date" name="listEntry[' + currentItem + '][date]" placeholder=""  /></div><div class="small-12 medium-6 large-3 columns"><input type="text" name="listEntry[' + currentItem + '][title]" placeholder="Title"  /></div><div class="small-12 medium-9 large-4 columns"><textarea name="listEntry[' + currentItem + '][story]" placeholder="Story" row="1"></textarea></div><div class="small-6 medium-2 large-1 columns"><input type="number" name="listEntry[' + currentItem + '][points]" value="0" /></div><div class="small-6 medium-1 large-1 columns"><input type="checkbox" name="listEntry[' + currentItem + '][deleteEntry]"/><span class="hiddenData">Delete Entry</span></div></div>';
                 $('#body_data').append(strToAdd);
 
             });
@@ -180,7 +187,7 @@
                     return "New information not saved. Do you wish to leave the page?";
                 }
             }
-            $("input[name='commit']").click(function() {
+            $('#confirm').click(function() {
                 formmodified = 0;
             });
         });

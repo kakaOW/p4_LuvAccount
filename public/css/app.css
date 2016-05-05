@@ -4546,8 +4546,16 @@ footer div p {
   .hiddenSmallData {
     display:none;
   }
+  .hiddenData {
+    /*position: relative;*/
+  }
 }
 
+@media screen and (min-width: 39.9375em) {
+  .hiddenData {
+    display:none;
+  }
+}
 
 
 /*----------------------------------------------------

@@ -61,7 +61,7 @@
             </div>
         </div>
 
-
+        <?php $i = 1?>
         <div class="row">
             <table class="hover">
               <thead>
@@ -76,12 +76,13 @@
               <tbody>
                 @foreach($entries as $entry)
                     <tr>
-                      <td>{{ $entry->entry }}</td>
+                      <td>{{ $i }}</td>
                       <td>{{ $entry->date }}</td>
                       <td>{{ $entry->title }}</td>
                       <td>{{ $entry->story }}</td>
                       <td>{{ $entry->points }}</td>
                     </tr>
+                <?php $i++?>
                 @endforeach
               </tbody>
               </tbody>

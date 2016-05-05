@@ -122,7 +122,6 @@ class ListController extends Controller
         foreach($listEntries as $listEntry) {
             if(isset($listEntry['id'])) {
                 $thisEntry = \App\Entry::where('id', $listEntry['id'])->first();
-                // $thisEntry = $thisEntry::update()
             } else{
                 $thisEntry = new \App\Entry();
             }
@@ -133,18 +132,20 @@ class ListController extends Controller
         $thisEntry->points = $listEntry['points'];
         $thisEntry->list_id = $list_id;
         $thisEntry->user_id = \Auth::id();
+        if(isset($listEntry['deleteEntry'])){
+            $thisEntry->deleteEntry = $listEntry['deleteEntry'];
+        }
         $thisEntry->save();
         }
 
-        // $deleteEntries = \App\Entry::where('checkbox', 'on')->delete();
+        $deleteEntries = \App\Entry::where('deleteEntry', 'on')->delete();
 
 
-        dump($thisEntry);
         // dump($deleteEntries);
 
         \Session::flash('message','Your list was updated');
-        return "proceed";
-        // return redirect('/edit/'.$request->id);
+        // return "proceed";
+        return redirect('/edit/'.$request->id);
 
     }
 
