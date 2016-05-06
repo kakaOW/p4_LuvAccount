@@ -14,8 +14,8 @@ class ListsTableSeeder extends Seeder
         DB::table('lists')->insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-            'subject' => 'Love',
-            'description' => 'A log of our ups and downs throughout our relationship',
+            'subject' => 'Get Fit',
+            'description' => 'Trying to loose weight and maintain healthy diet',
             'totalPoint' => '100',
             'user_id' => '1'
         ]);
@@ -23,10 +23,19 @@ class ListsTableSeeder extends Seeder
         DB::table('lists')->insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-            'subject' => 'Disney',
-            'description' => 'Our ups and downs at Disney 迪士尼',
+            'subject' => 'Christmas Present',
+            'description' => 'If Nick behaves well and get 100 points, he will get an iPhone for Christmas',
             'totalPoint' => '100',
             'user_id' => '1'
+        ]);
+
+        DB::table('lists')->insert([
+            'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+            'subject' => '愛情帳戶',
+            'description' => '屬於熊熊跟寶寶的愛情加減分',
+            'totalPoint' => '100',
+            'user_id' => '3'
         ]);
     }
 }

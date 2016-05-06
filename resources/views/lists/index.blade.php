@@ -8,7 +8,8 @@
             <div class="columns small-6 medium-5  align-self-middle">
                 <div class="media-object">
                     <div class="media-object-section">
-                        <img class="img-circle" data-interchange="[http://placehold.it/125x125, small], [http://placehold.it/125x125, medium], [http://placehold.it/225x225.jpg, large]">
+                        <!-- <img class="img-circle" data-interchange="[http://placehold.it/125x125, small], [http://placehold.it/125x125, medium], [http://placehold.it/225x225.jpg, large]"> -->
+                        <img class="img-circle" data-interchange="[img/jing_125x125.png, small], [img/jing_125x125.png, medium], [img/jing_225x225.png, large]">
                     </div>
                 </div>
             </div>
@@ -59,9 +60,9 @@
                         <div class="media-object">
                             <div class="media-object-section align-self-center">
                                 <div class="thumbnail gallery_view">
-                                    <a href="/show/{{$list->id}}"><img data-interchange="[http://placehold.it/125x125, small], [http://placehold.it/150x150, medium], [http://placehold.it/250x250.jpg, large]">
-                                    <h5>{{ $list->subject }}</h5>
-                                    <p>Progress: <?php echo round(($entries->where('list_id',$list->id)->sum('points'))/($list->totalPoint)*100)?> %</p></a>
+                                    <!-- <a href="/show/{{$list->id}}"><img data-interchange="[http://placehold.it/125x125, small], [http://placehold.it/150x150, medium], [http://placehold.it/250x250.jpg, large]"> -->
+                                    <a href="/show/{{$list->id}}"><img data-interchange="[img/love_125x125.png, small], [img/love_150x150.png, medium], [img/love_250x250.png, large]">
+                                    <h5>{{ $list->subject }}</h5></a>
                                 </div>
                             </div>
                         </div>
