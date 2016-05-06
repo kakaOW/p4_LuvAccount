@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Entry extends Model
 {
-    protected $fillable = ['date', 'title', 'story', 'points','deleteEntry'];
+    protected $fillable = ['date', 'title', 'story', 'points', 'color', 'deleteEntry'];
     public function lists() {
       return $this->belongsTo('\App\Lists');
     }

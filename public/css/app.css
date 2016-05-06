@@ -4482,7 +4482,7 @@ table.hover tr:nth-of-type(even):hover {
           animation-delay: 700ms !important; }
 
 body {
-  font-size: 0.825em; }
+  font-size: 0.9em; }
 
 .row {
   margin: 2em auto; }
@@ -4546,9 +4546,6 @@ footer div p {
   .hiddenSmallData {
     display:none;
   }
-  .hiddenData {
-    /*position: relative;*/
-  }
 }
 
 @media screen and (min-width: 39.9375em) {
@@ -4556,6 +4553,7 @@ footer div p {
     display:none;
   }
 }
+
 
 
 /*----------------------------------------------------

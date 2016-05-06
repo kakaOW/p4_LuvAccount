@@ -91,10 +91,11 @@ class ListController extends Controller
         }
 
         $entries = \App\Entry::where('list_id',$id)->orderBy('entry', 'asc')->get();
+
         if(\Auth::id() == $list->user_id) {
             return view('lists.edit')->with ([
                 'lists' => $list,
-                'entries' => $entries
+                'entries' => $entries,
             ]);
 
         } else{
@@ -132,6 +133,7 @@ class ListController extends Controller
         $thisEntry->points = $listEntry['points'];
         $thisEntry->list_id = $list_id;
         $thisEntry->user_id = \Auth::id();
+        $thisEntry->color = $listEntry['color'];
         if(isset($listEntry['deleteEntry'])){
             $thisEntry->deleteEntry = $listEntry['deleteEntry'];
         }
@@ -141,11 +143,11 @@ class ListController extends Controller
         $deleteEntries = \App\Entry::where('deleteEntry', 'on')->delete();
 
 
-        // dump($deleteEntries);
+        // dump($listEntries, $thisEntry);
 
         \Session::flash('message','Your list was updated');
         // return "proceed";
-        return redirect('/edit/'.$request->id);
+        return redirect('/show/'.$request->id);
 
     }
 

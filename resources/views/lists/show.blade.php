@@ -66,7 +66,7 @@
             <table class="hover">
               <thead>
                 <tr>
-                  <th width="30">Entry</th>
+                  <th width="25">Entry</th>
                   <th width="100">Date</th>
                   <th witdh="150">Title</th>
                   <th >Story</th>
@@ -75,7 +75,7 @@
               </thead>
               <tbody>
                 @foreach($entries as $entry)
-                    <tr>
+                    <tr style="color:{{$entry->color}};">
                       <td>{{ $i }}</td>
                       <td>{{ $entry->date }}</td>
                       <td>{{ $entry->title }}</td>

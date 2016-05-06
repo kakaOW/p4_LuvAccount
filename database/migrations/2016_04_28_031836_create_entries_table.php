@@ -26,6 +26,7 @@ class CreateEntriesTable extends Migration
         $table->string('title');
         $table->string('story');
         $table->integer('points');
+        $table->string('color');
         $table->string('deleteEntry');
         });
     }

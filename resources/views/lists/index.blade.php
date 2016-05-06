@@ -61,7 +61,7 @@
                                 <div class="thumbnail gallery_view">
                                     <a href="/show/{{$list->id}}"><img data-interchange="[http://placehold.it/125x125, small], [http://placehold.it/150x150, medium], [http://placehold.it/250x250.jpg, large]">
                                     <h5>{{ $list->subject }}</h5>
-                                    <p>Progress: {{round($entries->where('list_id',$list->id)->sum('points')/$list->totalPoint*100)}}%</p></a>
+                                    <p>Progress: {{round(($entries->where('list_id',$list->id)->sum('points'))/($list->totalPoint)*100)}} %</p></a>
                                 </div>
                             </div>
                         </div>
