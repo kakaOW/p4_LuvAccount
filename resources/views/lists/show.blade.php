@@ -62,15 +62,16 @@
 
         <div class="row">
             <div class="small-12 columns">
-                <a href="/"><button class="button secondary" type="button" value="Return">Return</button></a>
+                <a href="/" class="button secondary">Return</a>
                 @if($user->id==$lists->user_id )
-                <a class="button" href="/edit/{{ $lists->id }}"><button type="button" value="Edit">Edit</button></a>
+                <a class="button" href="/edit/{{ $lists->id }}">Edit</a>
                 @endif
             </div>
         </div>
 
         <div class="row">
             <div class="small-12 columns">
+                <!--Progress bar  -->
                 <div class="progress success" role="progressbar" tabindex="0" aria-valuenow="{{$entries->sum('points')}}" aria-valuemin="0" aria-valuetext="{{round($entries->sum('points')/$lists->totalPoint*100)}}%" aria-valuemax="{{ $lists->totalPoint }}">
                     <span class="progress-meter" style="width: {{round($entries->sum('points')/$lists->totalPoint*100)}}%">
                         <p class="progress-meter-text">{{round($entries->sum('points')/$lists->totalPoint*100)}}%</p>
@@ -111,8 +112,8 @@
                 <?php $i++?>
                 @endforeach
               </tbody>
-              </tbody>
           </table>
         </div>
-
+    </div>
+</div>
 @stop

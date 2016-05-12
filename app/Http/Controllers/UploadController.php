@@ -22,7 +22,7 @@ class UploadController extends Controller {
 
        // PASS THE INPUT AND RULES INTO THE VALIDATOR
         $this->validate($request, [
-        'file' => 'image|max:3000',
+        'file' => 'required|mimes:png,gif,jpeg,jpg,bmp',
         ]);
 
 
@@ -90,7 +90,7 @@ class UploadController extends Controller {
 
        // PASS THE INPUT AND RULES INTO THE VALIDATOR
         $this->validate($request, [
-        'listImg' => 'image|max:3000',
+        'listImg' => 'required|mimes:png,gif,jpeg,jpg,bmp',
         ]);
 
 

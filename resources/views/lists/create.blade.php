@@ -51,7 +51,7 @@
 
             <div class="row">
                 <div class="small-12 columns">
-                    <a href="/lists"><button class="button secondary" type="button" value="Return">Return</button></a>
+                    <a href="/lists" class="button secondary" >Return</a>
                     <button class="button secondary" type="reset" value="Reset">Clear</button>
                     <button class="button" type="submit" value="Submit">Sumbit</button>
                 </div>

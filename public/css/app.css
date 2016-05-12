@@ -4535,7 +4535,7 @@ footer div p {
 .hiddenSmall {
     background-color: #f2f2f2; }
   .hiddenSmall p {
-    padding-top: 1em;
+    padding-top: 0.4em;
   }
   @media screen and (max-width: 39.9375em) {
     .hiddenSmall {

@@ -57,9 +57,9 @@
 
             <div class="row">
                 <div class="small-12 columns">
-                    <a href="/show/{{$lists->id}}"><button class="button secondary" type="button" value="Return">Return</button></a>
-                    <a data-open="deleteConfirmation"><button class="button secondary" type="button" value="Return">Delete</button></a>
-                    <a href="/upload/{{$lists->id}}"><button class="button" type="button" value="Return">Upload Image</button></a>
+                    <a href="/show/{{$lists->id}}" class="button secondary">Return</a>
+                    <a data-open="deleteConfirmation" class="button secondary">Delete</a>
+                    <a href="/upload/{{$lists->id}}" class="button">Upload Image</a>
                     <button class="button" type="submit" value="Submit" id="confirm">Update</button>
                 </div>
             </div>
@@ -68,7 +68,7 @@
                 <h5>Delete {{$lists->subject }}</h5>
                 <p class="lead">This list will be deleted and you won't be able to find it anymore. You can also edit this list, if you just want to change something.</p>
                 <button class="button secondary" data-close aria-label="Close modal" type="button">Cancel</button>
-                <a href="/delete/{{$lists->id}}"><button class="button" type="button" value="Return">Proceed</button></a>
+                <a href="/delete/{{$lists->id}}" class="button">Proceed</a>
                 <button class="close-button" data-close aria-label="Close modal" type="button">
                 <span aria-hidden="true">&times;</span>
                 </button>

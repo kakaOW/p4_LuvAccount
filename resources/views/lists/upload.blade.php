@@ -28,7 +28,9 @@
                 <form action="/profile/upload" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <input type="file"  name="file">
-                    <a href="/profile"><button class="button secondary" type="button" value="Return">Return</button></a>
+                    <p>Maximum upload size: 2MB</p>
+                    <p>Supported file type: jpg, jpeg, png, gif, bmp</p>
+                    <a class="button secondary" href="/profile">Return</a>
                     <button class="button" type="submit" value="Submit">Sumbit</button>
                     @if($errors->get('file'))
                     <div class="alert callout">

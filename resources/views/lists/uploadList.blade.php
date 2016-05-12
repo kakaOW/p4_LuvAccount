@@ -35,7 +35,9 @@
                 <form action="/upload/{{$lists->id}}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <input type="file"  name="listImg">
-                    <a href="/edit/{{$lists->id}}"><button class="button secondary" type="button" value="Return">Return</button></a>
+                    <p>Maximum upload size: 2MB</p>
+                    <p>Supported file type: jpg, jpeg, png, gif, bmp</p>
+                    <a href="/edit/{{$lists->id}}" class="button secondary">Return</a>
                     <button class="button" type="submit" value="Submit">Sumbit</button>
                     @if($errors->get('listImg'))
                     <div class="alert callout">
