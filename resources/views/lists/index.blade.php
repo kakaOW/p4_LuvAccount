@@ -8,13 +8,11 @@
             <div class="columns small-6 medium-5  align-self-middle">
                 <div class="media-object">
                     <div class="media-object-section">
-                        @if(is_null('uploads/profile_original_'.$user->id.'.png'))
-                        <img class="img-circle" data-interchange="[http://placehold.it/125x125, small], [http://placehold.it/125x125, medium], [http://placehold.it/225x225.jpg, large]">
-                        @else
+                        @if($user->profileImg == 'profile_original_{{$user->id}}.png')
                         <img class="img-circle" data-interchange="[uploads/profile_125x125_{{$user->id}}.png, small], [[uploads/profile_125x125_{{$user->id}}.png, medium], [uploads/profile_225x225_{{$user->id}}.png, large]">
+                        @else
+                        <img class="img-circle" data-interchange="[img/stock_125x125.png, small], [img/stock_125x125.png, medium], [img/stock_225x225.png, large]">
                         @endif
-                        <?php dump(is_resourse('uploads/profile_original_'.$user->id.'.png'))?>
-                        <?php dump(is_resourse('uploads/profile_original_1.png'))?>
                     </div>
                 </div>
             </div>

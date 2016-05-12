@@ -42,11 +42,11 @@ class UploadController extends Controller {
         if ($height < $width) {
             $Coordinate = ($width - $height) / 2;
             $cropLargeImage = $resizeImage->crop($height,$height, $Coordinate, 0)->resize(225, 225)->save($destinationPath.'/'.'profile_225x225_'. \Auth::id().'.png', 70);
-            $cropSmallImage = $cropLargeImage->resize(225, 225)->save($destinationPath.'/'.'profile_125x125_'. \Auth::id().'.png', 60);
+            $cropSmallImage = $cropLargeImage->resize(125, 125)->save($destinationPath.'/'.'profile_125x125_'. \Auth::id().'.png', 60);
         } elseif ($height > $width) {
             $Coordinate = ($height - $width) / 2;
             $cropLargeImage = $resizeImage->crop($width,$width,0, $Coordinate)->resize(225, 225)->save($destinationPath.'/'.'profile_225x225_'. \Auth::id().'.png', 70);
-            $cropSmallImage = $cropLargeImage->resize(225, 225)->save($destinationPath.'/'.'profile_125x125_'. \Auth::id().'.png', 60);
+            $cropSmallImage = $cropLargeImage->resize(125, 125)->save($destinationPath.'/'.'profile_125x125_'. \Auth::id().'.png', 60);
         } else {
             $cropLargeImage = $resizeImage->resize(225, 225)->save($destinationPath.'/'.'profile_225x225_'. \Auth::id().'.png', 70);
             $cropSmallImage = $resizeImage->resize(125, 125)->save($destinationPath.'/'.'profile_125x125_'. \Auth::id().'.png', 60);
@@ -55,7 +55,10 @@ class UploadController extends Controller {
         // IF UPLOAD IS SUCCESSFUL SEND SUCCESS MESSAGE OTHERWISE SEND ERROR MESSAGE
 
         if ($upload_success) {
-            return Redirect('/profile');
+            $user = \App\User::find(\Auth::id());
+            $user->profileImg = $fileName;
+            $user->save();
+            return Redirect('/upload');
         }
     }
 
