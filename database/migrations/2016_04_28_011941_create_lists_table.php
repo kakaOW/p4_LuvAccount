@@ -25,7 +25,7 @@ class CreateListsTable extends Migration
         $table->string('subject');
         $table->string('description');
         $table->integer('totalPoint');
-
+        $table->string('listImg');
         });
     }
 

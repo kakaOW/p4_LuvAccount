@@ -1,27 +1,19 @@
-# Laravel PHP Framework
+# P4 Luv Account
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+## Live URL
+<http://p4.yungwei.me>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+## Description
+It's a common practice that teachers use stickers to encourage students in elementary school when they behave well. The stickers are usually printed in different bright colors and with encouraging words like, "awesome", "good job", "super", "you are a STAR", "way to go", "nice", "great", etc. Luv Account is a web application that records the moments and sign points to each. The user can set the end goal or reward when the goal is reached.
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+## Demo
+<>
 
-## Official Documentation
+## Details for teaching team
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+## Outside Source
+* [Foundation](http://foundation.zurb.com/)
+* [Intervention Image](http://image.intervention.io/)
+* Stock Image Source: <http://www.iconarchive.com/show/ultrabuuf-icons-by-mattahan.html> by [Paul Davey](http://www.mattahan.com/)
+* Jquery preventing user to leave the page without save: <http://stackoverflow.com/questions/16322042/jquery-warn-if-leaving-page-without-clicking-the-save-button/16322183>

@@ -8,10 +8,10 @@
             <div class="columns small-6 medium-5  align-self-middle">
                 <div class="media-object">
                     <div class="media-object-section">
-                        @if($user->profileImg == 'profile_original_{{$user->id}}.png')
-                        <img class="img-circle" data-interchange="[uploads/profile_125x125_{{$user->id}}.png, small], [[uploads/profile_125x125_{{$user->id}}.png, medium], [uploads/profile_225x225_{{$user->id}}.png, large]">
-                        @else
+                        @if(empty($user->profileImg))
                         <img class="img-circle" data-interchange="[img/stock_125x125.png, small], [img/stock_125x125.png, medium], [img/stock_225x225.png, large]">
+                        @else
+                        <img class="img-circle" data-interchange="[uploads/profile_125x125_{{$user->id}}.png, small], [[uploads/profile_125x125_{{$user->id}}.png, medium], [uploads/profile_225x225_{{$user->id}}.png, large]">
                         @endif
                     </div>
                 </div>
@@ -22,7 +22,7 @@
                         <h3>{{ $user->name }}</h3>
                     </div>
                     <div class="columns ">
-                        <a href="/upload"><button class="secondary hollow button tiny">Upload Profile Picture</button></a>
+                        <a href="/profile/upload"><button class="secondary hollow button tiny">Upload Profile Picture</button></a>
                     </div>
                 </div>
                 <div class="row">
@@ -63,8 +63,11 @@
                         <div class="media-object">
                             <div class="media-object-section align-self-center">
                                 <div class="thumbnail gallery_view">
-                                    <!-- <a href="/show/{{$list->id}}"><img data-interchange="[http://placehold.it/125x125, small], [http://placehold.it/150x150, medium], [http://placehold.it/250x250.jpg, large]"> -->
-                                    <a href="/show/{{$list->id}}"><img data-interchange="[img/love_125x125.png, small], [img/love_150x150.png, medium], [img/love_250x250.png, large]">
+                                    @if(empty($list->listImg))
+                                    <a href="/show/{{$list->id}}"><img data-interchange="[http://placehold.it/125x125?text=LuvAccount, small], [http://placehold.it/150x150?text=LuvAccount, medium], [http://placehold.it/250x250?text=LuvAccount, large]">
+                                    @else
+                                    <a href="/show/{{$list->id}}"><img data-interchange="[/uploads/list_125x125_{{$user->id}}_{{$list->id}}.png, small], [/uploads/list_150x150_{{$user->id}}_{{$list->id}}.png, medium], [/uploads/list_250x250_{{$user->id}}_{{$list->id}}.png, large]">
+                                    @endif
                                     <h5>{{ $list->subject }}</h5></a>
                                 </div>
                             </div>

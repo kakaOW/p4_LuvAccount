@@ -5,31 +5,49 @@
 <div class="row align-center">
     <div class="small-12 medium-11">
         <div class="row">
-            <div class="small-3 columns">
-                <label>Subject</label>
+            <div class="small-12 medium-4 shrink columns">
+                @if(empty($lists ->listImg))
+                <div class="thumbnail">
+                    <img src="http://placehold.it/250x250?text=LuvAccount" alt="Header Image">
+                </div>
+
+                @else
+                <div class="thumbnail">
+                    <img src="/uploads/list_250x250_{{$user->id}}_{{$lists->id}}.png" alt="Header Image">
+                </div>
+
+                @endif
             </div>
-            <div class="small-9 columns">
-                <h5>{{ $lists->subject }}</h5>
+            <div class="small-12 medium-8 columns">
+                <div class="row">
+                    <div class="small-3 columns">
+                        <label>Subject</label>
+                    </div>
+                    <div class="small-9 columns">
+                        <h5>{{ $lists->subject }}</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="small-3 columns">
+                        <label>Description</label>
+                    </div>
+                    <div class="small-9 columns">
+                        <h5>{{ $lists->description}}</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="small-3 columns">
+                        <label>Total Point to achieve</label>
+                    </div>
+                    <div class="small-9 medium-3 columns">
+                        <h5>{{ $lists->totalPoint }}</h5>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="small-3 columns">
-                <label>Description</label>
-            </div>
-            <div class="small-9 columns">
-                <h5>{{ $lists->description}}</h5>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="small-3 columns">
-                <label>Total Point to achieve</label>
-            </div>
-            <div class="small-9 medium-3 columns">
-                <h5>{{ $lists->totalPoint }}</h5>
-            </div>
-        </div>
 
         @if($user->id!=$lists->user_id )
         <div class="row">

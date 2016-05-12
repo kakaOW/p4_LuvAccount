@@ -18,10 +18,6 @@ Route::get('/show-login-status', function() {
     return;
 });
 
-#List specific routes
-
-// route::get('/upload/add', 'UploadController@getCrop');
-// Route::post('upload/add/', 'UploadController@postCrop');
 
 //Home
 Route::get('/', 'WelcomeController@getIndex');
@@ -31,10 +27,12 @@ Route::get('/show/{id?}', 'ListController@getShow');
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/profile', 'ListController@getIndex');
 
-    //Upload Image
-    route::get('/upload', 'UploadController@getUpload');
-    Route::post('upload/', 'UploadController@postUpload');
+    //Upload Profile Image
+    route::get('/profile/upload', 'UploadController@getUpload');
+    Route::post('profile/upload/', 'UploadController@postUpload');
 
+    route::get('/upload/{id?}', 'UploadController@getListUpload');
+    Route::post('upload/{id?}', 'UploadController@postListUpload');
     //Edit Profile
     // Route::get('/profile/edit', 'ProfileController@getProfile');
     // Route::post('/profile/edit', 'ProfileController@postProfile');

@@ -59,6 +59,7 @@
                 <div class="small-12 columns">
                     <a href="/show/{{$lists->id}}"><button class="button secondary" type="button" value="Return">Return</button></a>
                     <a data-open="deleteConfirmation"><button class="button secondary" type="button" value="Return">Delete</button></a>
+                    <a href="/upload/{{$lists->id}}"><button class="button" type="button" value="Return">Upload Image</button></a>
                     <button class="button" type="submit" value="Submit" id="confirm">Update</button>
                 </div>
             </div>

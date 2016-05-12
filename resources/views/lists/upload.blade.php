@@ -6,26 +6,26 @@
     <div class="small-12 medium-8 columns">
         <h4>Current Profile Picture</h4>
         <div class="row">
-            @if($user->profileImg == 'profile_original_{{$user->id}}.png')
+            @if(empty($user->profileImg))
             <div class="small-7 shrink columns">
-                <img class="img-circle" src="uploads/profile_225x225_{{$user->id}}.png" alt="Profile Pic Large" />
+                <img class="img-circle" src="/img/stock_225x225.png" alt="Profile Pic Large" />
             </div>
             <div class="small-5 align-self-bottom columns">
-                <img class="img-circle" src="uploads/profile_125x125_{{$user->id}}.png" alt="Profile Pic Small" />
+                <img class="img-circle" src="/img/stock_125x125.png" alt="Profile Pic Small" />
             </div>
             @else
             <div class="small-7 shrink columns">
-                <img class="img-circle" src="img/stock_225x225.png" alt="Profile Pic Large" />
+                <img class="img-circle" src="/uploads/profile_225x225_{{$user->id}}.png" alt="Profile Pic Large" />
             </div>
             <div class="small-5 align-self-bottom columns">
-                <img class="img-circle" src="img/stock_125x125.png" alt="Profile Pic Small" />
+                <img class="img-circle" src="/uploads/profile_125x125_{{$user->id}}.png" alt="Profile Pic Small" />
             </div>
             @endif
         </div>
         <h5>Upload Image</h5>
         <div class="row">
             <div class="small-12 medium-8 columns">
-                <form action="/upload" method="post" enctype="multipart/form-data">
+                <form action="/profile/upload" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <input type="file"  name="file">
                     <a href="/profile"><button class="button secondary" type="button" value="Return">Return</button></a>
