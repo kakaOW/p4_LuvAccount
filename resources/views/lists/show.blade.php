@@ -81,7 +81,7 @@
             <div class="small-12 columns">
                 <i class="fa fa-plus" aria-hidden="true">
                 @if(strval($entries) != "[]")
-                <?php $i= 0 ; foreach($entries as $entry){if($entry->points > 0){$temp[$i]=$entry->points; $i++;}else{$temp[$a]= 0;};} echo array_sum($temp);?>
+                <?php $i= 0 ; foreach($entries as $entry){if($entry->points > 0){$temp[$i]=$entry->points; $i++;}else{$temp[$i]= 0;};} echo array_sum($temp);?>
                 @else
                 0
                 @endif
