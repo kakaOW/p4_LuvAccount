@@ -20,6 +20,9 @@ Route::get('/show-login-status', function() {
 
 #List specific routes
 
+// route::get('/upload/add', 'UploadController@getCrop');
+// Route::post('upload/add/', 'UploadController@postCrop');
+
 //Home
 Route::get('/', 'WelcomeController@getIndex');
 //Show
@@ -28,9 +31,13 @@ Route::get('/show/{id?}', 'ListController@getShow');
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/profile', 'ListController@getIndex');
 
+    //Upload Image
+    route::get('/upload', 'UploadController@getUpload');
+    Route::post('upload/', 'UploadController@postUpload');
+
     //Edit Profile
-    Route::get('/profile/edit', 'ProfileController@getProfile');
-    Route::post('/profile/edit', 'ProfileController@postProfile');
+    // Route::get('/profile/edit', 'ProfileController@getProfile');
+    // Route::post('/profile/edit', 'ProfileController@postProfile');
     //Create list
     Route::get('/create', 'ListController@getCreate');
     Route::post('/create', 'ListController@postCreate');

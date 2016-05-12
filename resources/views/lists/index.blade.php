@@ -8,8 +8,13 @@
             <div class="columns small-6 medium-5  align-self-middle">
                 <div class="media-object">
                     <div class="media-object-section">
-                        <!-- <img class="img-circle" data-interchange="[http://placehold.it/125x125, small], [http://placehold.it/125x125, medium], [http://placehold.it/225x225.jpg, large]"> -->
-                        <img class="img-circle" data-interchange="[img/jing_125x125.png, small], [img/jing_125x125.png, medium], [img/jing_225x225.png, large]">
+                        @if(is_null('uploads/profile_original_'.$user->id.'.png'))
+                        <img class="img-circle" data-interchange="[http://placehold.it/125x125, small], [http://placehold.it/125x125, medium], [http://placehold.it/225x225.jpg, large]">
+                        @else
+                        <img class="img-circle" data-interchange="[uploads/profile_125x125_{{$user->id}}.png, small], [[uploads/profile_125x125_{{$user->id}}.png, medium], [uploads/profile_225x225_{{$user->id}}.png, large]">
+                        @endif
+                        <?php dump(is_resourse('uploads/profile_original_'.$user->id.'.png'))?>
+                        <?php dump(is_resourse('uploads/profile_original_1.png'))?>
                     </div>
                 </div>
             </div>
@@ -19,7 +24,7 @@
                         <h3>{{ $user->name }}</h3>
                     </div>
                     <div class="columns ">
-                        <a href="/profile/edit"><button class="secondary hollow button tiny">Edit Profile</button></a>
+                        <a href="/upload"><button class="secondary hollow button tiny">Upload Profile Picture</button></a>
                     </div>
                 </div>
                 <div class="row">

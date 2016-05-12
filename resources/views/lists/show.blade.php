@@ -59,6 +59,14 @@
                     </span>
                 </div>
             </div>
+            <div class="small-12 columns">
+                <i class="fa fa-plus" aria-hidden="true">
+                <?php $i= 0 ; foreach($entries as $entry){if($entry->points > 0){$temp[$i]=$entry->points; $i++;};} echo array_sum($temp);?>
+                </i>
+                <i class="fa fa-minus" aria-hidden="true">
+                <?php $a= 0 ; foreach($entries as $entry){if($entry->points < 0){$temp2[$a]=$entry->points; $a++;};} echo -array_sum($temp2);?>
+                </i>
+            </div>
         </div>
 
         <?php $i = 1?>

@@ -1,5 +1,10 @@
 @extends('layouts.master')
 
+@section('head')
+    <link rel="stylesheet" href="/css/crop.css">
+
+@stop
+
 @section('content')
 
 <div class="row align-center">
@@ -48,6 +53,7 @@
                     @endif
                 </div>
             </div>
+
 
             <div class="row">
                 <div class="small-12 columns">
@@ -176,17 +182,17 @@
                 </div>
             @endif
             </div>
-        </form>
-
-        </div>
-        <div class="row small-12 medium-9 align-center">
             <div class="row">
                 <div class="small-12 columns">
-                    <button class="button small" id="addnew" name="addnew" value="Add new item">Add new entry</button>
+                    <button class="button small" type="button" id="addnew" name="addnew" value="Add new item">Add new entry</button>
+                    <button class="button small" type="submit" value="Submit" id="confirm2">Update</button>
                     <input type="hidden" id="items" name="items" value="1" />
                 </div>
             </div>
-        </div>
+        </form>
+
+
+
     </div>
 </div>
 @stop
@@ -222,7 +228,12 @@
             $('#confirm').click(function() {
                 formmodified = 0;
             });
+            $('#confirm2').click(function() {
+                formmodified = 0;
+            });
         });
     </script>
+    </body>
+    </html>
 
 @stop
