@@ -9,9 +9,9 @@
                 <div class="media-object">
                     <div class="media-object-section">
                         @if(empty($user->profileImg))
-                        <img class="img-circle" data-interchange="[img/stock_125x125.png, small], [img/stock_125x125.png, medium], [img/stock_225x225.png, large]">
+                        <img class="img-circle" data-interchange="[/img/stock_125x125.png, small], [/img/stock_125x125.png, medium], [/img/stock_225x225.png, large]">
                         @else
-                        <img class="img-circle" data-interchange="[uploads/profile_125x125_{{$user->id}}.png, small], [[uploads/profile_125x125_{{$user->id}}.png, medium], [uploads/profile_225x225_{{$user->id}}.png, large]">
+                        <img class="img-circle" data-interchange="[/uploads/profile_125x125_{{$user->id}}.png, small], [/uploads/profile_125x125_{{$user->id}}.png, medium], [/uploads/profile_225x225_{{$user->id}}.png, large]">
                         @endif
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                     <div class="media-object">
                         <div class="media-object-section align-self-center">
                             <div class="thumbnail gallery_view">
-                                <a href="/create"><img data-interchange="[img/add_125x125.png, small], [img/add_150x150.png, medium], [img/add_250x250.png, large]">
+                                <a href="/create"><img data-interchange="[/img/add_125x125.png, small], [/img/add_150x150.png, medium], [/img/add_250x250.png, large]">
                                     <h5>Add new</h5>
                                     <p></p>
                                 </a>
