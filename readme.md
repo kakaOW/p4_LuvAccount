@@ -7,10 +7,10 @@
 It's a common practice that teachers use stickers to encourage students in elementary school when they behave well. The stickers are usually printed in different bright colors and with encouraging words like, "awesome", "good job", "super", "you are a STAR", "way to go", "nice", "great", etc. Luv Account is a web application that records the moments and sign points to each. The user can set the end goal or reward when the goal is reached.
 
 ## Demo
-<>
+<http://screencast.com/t/VhMYBIRk8FK>
 
 ## Details for teaching team
-
+This is a mobile first web app, feel free to use your smartphone or tablet.
 
 ## Outside Source
 * [Foundation](http://foundation.zurb.com/)
