@@ -80,14 +80,14 @@
             </div>
             <div class="small-12 columns">
                 <i class="fa fa-plus" aria-hidden="true">
-                @if(isset($entries->list_id))
+                @if(strval($entries) != "[]")
                 <?php $i= 0 ; foreach($entries as $entry){if($entry->points > 0){$temp[$i]=$entry->points; $i++;};} echo array_sum($temp);?>
                 @else
                 0
                 @endif
                 </i>
                 <i class="fa fa-minus" aria-hidden="true">
-                @if(isset($entries->list_id))
+                @if(strval($entries) != "[]")
                 <?php $a= 0 ; foreach($entries as $entry){if($entry->points < 0){$temp2[$a]=$entry->points; $a++;};} echo -array_sum($temp2);?>
                 @else
                 0
