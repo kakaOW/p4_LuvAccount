@@ -204,7 +204,7 @@
     <script src="/js/vendor/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            var currentItem = <?php $i =1; echo strval($entries) == "[]" ? $i :  $entries->max('entry'); ?>;
+            var currentItem = <?php $i =1; echo strval($entries) == "[]" ? $i :  $entries->count('entry'); ?>;
             $('#addnew').click(function() {
                 currentItem++;
                 $('#items');
